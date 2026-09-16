@@ -1,0 +1,6 @@
+{
+  "name": "مكتب رعاية الطلاب",
+  "description": "بوابة مكتب رعاية الطلاب بكلية التربية النوعية للأنشطة والتكافل الاجتماعي",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

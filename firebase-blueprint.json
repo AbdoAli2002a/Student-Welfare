@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user in the system (student or admin)",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["student", "admin"] },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "username": { "type": "string" },
+        "level": { "type": "string" },
+        "studentId": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["role", "name", "email", "createdAt", "updatedAt"]
+    },
+    "Activity": {
+      "title": "Activity",
+      "description": "A student activity or trip",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string" },
+        "status": { "type": "string" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "type", "status", "date", "createdAt", "updatedAt"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "A student's registration for an activity or trip",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "activityTitle": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "activityTitle", "type", "status", "date", "createdAt", "updatedAt"]
+    },
+    "SolidarityRequest": {
+      "title": "Solidarity Request",
+      "description": "A student request for social solidarity",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string", "enum": ["received", "under_review", "accepted", "disbursed"] },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "type", "status", "date", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles"
+    },
+    "activities/{activityId}": {
+      "schema": { "$ref": "#/entities/Activity" },
+      "description": "Activities and trips"
+    },
+    "registrations/{registrationId}": {
+      "schema": { "$ref": "#/entities/Registration" },
+      "description": "Student registrations for activities and trips"
+    },
+    "solidarityRequests/{requestId}": {
+      "schema": { "$ref": "#/entities/SolidarityRequest" },
+      "description": "Solidarity requests submitted by students"
+    }
+  }
+}
